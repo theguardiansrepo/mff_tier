@@ -1,0 +1,639 @@
+<html>
+<!doctype html>
+<head>
+	<title>r/AutoChess Tier List Creator</title>
+	<link href="https://fonts.googleapis.com/css?family=Roboto:400,100italic,700" rel="stylesheet" type="text/css">
+	<link rel="icon" type="image/x-icon" href= "https://assets.pxdn.cloud/ico/favicon.ico">
+	<link href="newstyle.css" rel="stylesheet">
+	<link href="dragula.min.css" rel="stylesheet">
+	<link rel="author" href="http://0px.moe" />
+	<meta charset="utf-8"/>
+	<meta content='width=device-width, initial-scale=1' name='viewport'/>
+	<meta name="description" content="Create tier lists for Dota Auto Chess"/>
+	<meta name="keywords" content="tier list creator, tier list, tier list maker, esports, gaming, games, big anime tiddies, so big it's scary, like way too big">
+</head>
+<body>
+	<nav class="controlList">
+		<div id="controls">
+			<h1 style="text-transform: none;"><a style="color: inherit;" href="https://reddit.com/r/AutoChess" target="_blank">r/AUTOCHESS</a> TIER LIST CREATOR <baby id="version">v1.68</baby></h1>
+			<div id="buttons">
+				<button id="screenshot">Share / Import</button>
+				<button id="hidebuttons">Hide Controls</button>
+				<button id="reset">Reset List</button>
+				<button id="help">Help</button>
+			</div>
+		</div>
+	</nav>
+
+	<div id="Editor">
+		<div id="tablewrap"><div class="tablePadding"><table><tbody>
+			<h1 id="tierTitle">New Tier List (click to change)</h1>
+			<tr>
+				<td class="labelHolder" contenteditable="true"><span class="label">S</span></td>
+				<td><div class="tier sort" id="rows"></div></td>
+				<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			</tr>
+			<tr>
+				<td class="labelHolder" contenteditable="true"><span class="label">S</span></td>
+				<td><div class="tier sort" id="rows"></div></td>
+				<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			</tr>
+			<tr>
+				<td class="labelHolder" contenteditable="true"><span class="label">A</span></td>
+				<td><div class="tier sort" id="rows"></div></td>
+				<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			</tr>
+			<tr>
+				<td class="labelHolder" contenteditable="true"><span class="label">B</span></td>
+				<td><div class="tier sort" id="rows"></div></td>
+				<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			</tr>
+			<tr>
+				<td class="labelHolder" contenteditable="true"><span class="label">C</span></td>
+				<td><div class="tier sort" id="rows"></div></td>
+				<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			</tr>
+			<tr>
+				<td class="labelHolder" contenteditable="true"><span class="label">D</span></td>
+				<td><div class="tier sort" id="rows"></div></td>
+				<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			</tr>
+			<tr>
+				<td class="labelHolder" contenteditable="true"><span class="label">E</span></td>
+				<td><div class="tier sort" id="rows"></div></td>
+				<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			</tr>
+			<tr>
+				<td class="labelHolder" contenteditable="true"><span class="label">F</span></td>
+				<td><div class="tier sort" id="rows"></div></td>
+				<td><div id="settings"></div><div id="moveButtons"><div id="moveUp"></div><div id="moveDown"></div></div></td>
+			</tr>
+		</tbody></table>
+		</div></div>
+	</div>
+
+	<div id="char" class="sort">
+		<div>If no characters are loaded here, clicking "Reset List" should fix it.</div>
+	</div>
+
+	<div id="characterHighlight">
+		<span id="characterHighlightName">Abaddon</span>
+	</div>
+
+	<div id="overlay">
+		<div id="modalWrapper">
+			<div id="modal">
+				<h1>SETTINGS</h1>
+				<span id="close"></span>
+				<div class="colorSelectorGrid">
+					<p>Tier Color &ndash;</p>
+					<div id="colorselect"><span style="background:#FF7F7F"></span><span style="background:#FFBF7F"></span><span style="background:#FFDF7F"></span><span style="background:#FFFF7F"></span><span style="background:#BFFF7F"></span><span style="background:#7FFF7F"></span><span style="background:#7FFFFF"></span><span style="background:#7FBFFF"></span><span style="background:#7F7FFF"></span><span style="background:#FF7FFF"></span><span style="background:#BF7FBF"></span><span style="background:#3B3B3B"></span><span style="background:#858585"></span><span style="background:#F7F7F7"></span></div>
+					<p>Tier Name &ndash;</p><textarea id="labelName"></textarea>
+					<!-- <p>Options:</p> -->
+					<p><button id="clearRow">Clear Current Tier</button><button id="saveSettings">Save Changes</button></p>
+				</div>
+			</div>
+			<div id="gameChange">
+				<h1>CHANGE GAME</h1>
+				<span id="close"></span>
+				<div id="switchButtons">
+					<button id="switchDAC">Auto Chess</button>
+				</div>
+				<p>Changing your game <strong>will</strong> empty your tier list! You cannot undo this.</p>
+			</div>
+			<div id="helpMenu">
+				<h1>HELP</h1>
+				<p>
+					<dl>
+						<dt>Share / Import &ndash;</dt>
+						<dd>The top half creates a shareable image for your tier list. Simply right-click and choose "Save Image As" to save your tier list. The bottom half gives you a shareable code and link for an editable version of your tier list. &ndash; If you have a code, paste it into the box and click "Import Tier List". <strong>This will overwrite your current tier list with the one you've imported.</strong></dd>
+						<dt>Hide Controls &ndash;</dt>
+						<dd>Hides the control buttons on the right-side of the creator. Good for mobile!</dd>
+						<dt>Reset List &ndash;</dt>
+						<dd>Clears your entire tier list. Please be sure you want to reset your tier list before clicking.</dd>
+						<dt>Tip: Did you accidentally delete something or reset your tier list?</dt>
+						<dd>Open your web browser's console to see your tier list's history.</dd>
+					</dl>
+				</p>
+				<h1>ABOUT</h1>
+				<span id="close"></span>
+				<p>This is a new and maintained version of the original Smash Tier List Maker created<baby>(?)</baby> by <a href="https://github.com/quetzle">Quetzle</a>.
+					I used to have my own fork of this project a long time ago, but due to hosting trouble and lack of version control, I lost it. But now it's back... with version control and for Dota Auto Chess!
+				</p>
+			</div>
+			<div id="patchNotes">
+				<h1>Patch Notes</h1>
+				<p>
+					<dl>
+						<dt>Version 1.68 &ndash;</dt>
+						<dd>Added <strong>Mars</strong>, <strong>Zeus</strong>. (Thanks Lorentzen1337)</dd>
+            <dt>Version 1.67 &ndash;</dt>
+            <dd>Fixed issue where character name tags wouldn't appear when hovering. (Firefox)</dd>
+            <dt>Version 1.66 &ndash;</dt>
+            <dd>Added <strong>Riki</strong>, <strong>Death Prophet</strong>, <strong>Mirana</strong>.</dd>
+						<dt>Version 1.65 &ndash;</dt>
+						<dd>Added <strong>Morphling</strong>, <strong>Terrorblade</strong>, <strong>Tiny</strong>.</dd>
+						<dt>Version 1.6 &ndash;</dt>
+						<dd>Added the ability to give your tier list a title for screenshots. Does not transfer with share link or share code.</dd>
+						<dd>Fixed big where the share link wouldn't parse properly when used by someone else.</dd>
+						<dd>"Fixed" bug where tier names would import as <strong>undefined</strong> if edited a certain way.</dd>
+						<dt>Version 1.5 &ndash;</dt>
+						<dd>You can now get a shareable link when you hit <strong>Import/Share</strong>.</dd>
+						<dd>Clicking <strong>Rest List</strong> now clears the tier list from the cache as well.</dd>
+						<dd>Fixed an issue where tier lists weren't persisting after refreshing the page.</dd>
+						<dd>Fixed an issue where windows on mobile appeared too low on the page.</dd>
+						<dd>Changed some minor things to improve UX.</dd>
+						<dt>Version 1.3 &ndash;</dt>
+						<dd>Now hovering hero icons says the name of the hero.</dd>
+						<dd>Cleaned up the code (slightly).</dd>
+					</dl>
+				</p>
+				<span id="close"></span>
+			</div>
+			<div id="screenshotShow">
+				<span id="close"></span>
+				<p style="text-align: center;">Your tier list should appear above.<br/>You can right-click the image to save it or copy the code below for an editable version.</p>
+				<div class="sharebox" id="importexport">
+					<label class="tblabel" for="exportlink" style="text-align: center; font-size: 12px;">Import/Export Code</label>
+					<textarea id="exportcode" name="importexport" cols="30" rows="8"></textarea>
+				</div>
+				<div class="sharebox" id="sharelink">
+					<label class="tblabel" for="importexport" style="text-align: center; font-size: 12px;">Shareable Link</label>
+					<textarea id="exportlink" name="exportlink" cols="30" rows="8" readonly></textarea>
+					<div style="padding: 10px;"></div>
+				</div>
+				<button class="importexportbtn" id="runCode">Import Tier List</button>
+			</div>
+		</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+	<script src="dragula.min.js"></script>
+	<script src="html2canvas.min.js"></script>
+	<script>
+		dragula({
+			isContainer: function (el) {
+				return el.classList.contains('sort');
+			},
+			invalid: function (el){
+				// return console.log("invalid target");
+			}
+		}).on('drag', function(el, source) {
+        $("body").css("touch-action", "none");
+     		$("#characterHighlight").css("display", "none");
+    		$(document).on('touchstart', function(e) {
+    	});
+    	}).on("drop", function() {
+     		$("#characterHighlight").css("display", "none");
+				localStorage.setItem("TierListCreatorCode",toCode());
+				$("body").css("touch-action", "pan-y");
+		});
+
+		// character images
+		var singleChar = "<div class='character'></div>";
+		var gameDAC = ["dac", "absorbingman", "adamwarlock", "agentvenom", "amadeuscho", "americachavez", "ancientone", "angel", "angela", "antiman", "antman", "apocalypse", "arachknight", "baronmordo", "beast", "blackbolt", "blackcat", "cullobsidian", "blackpanther", "blackwidow", "blade", "bluemarvel", "bullseye", "cable", "captainamerica", "captainmarvel", "carnage", "clea", "colossus", "corvusglaive", "crescent", "crossbones", "crystal", "cyclops", "daisyjohnson", "daredevil", "deadpool", "deathlok", "destroyer", "doctordoom", "doctorminerva", "doctoroctopus", "doctorstrange", "domino", "dormmamu", "drax", "ebonymaw", "elektra", "elsabloodstone", "emmafrost", "enchantress", "falcon", "fandral", "fantomex", "gambit", "gamora", "ghost", "ghostpanther", "ghostrider", "giantman", "goliath", "gorgon", "greengoblin", "groot", "gwenpool", "hawkeye", "heimdall", "hela", "hellcat", "hellstorm", "hogun", "hulk", "hulkbuster", "hulkling", "humantorch", "hyperion", "inferno", "invisiblewoman", "ironfist", "ironhammer", "ironheart", "ironman", "janefoster", "jeangrey", "jessicajones", "juggernaut", "kaecilius", "kamalakhan", "karnak", "katebishop", "kidkaiju", "killmonger", "kingpin", "korath", "kraventhehunter", "lash", "lincoln", "lizard", "loki", "lukecage", "lunasnow", "magik", "magneto", "malekith", "mantis", "maximus", "medusa", "milesmorales", "misterfantastic", "mistyknight", "mockingbird", "modok", "moongirl", "moonknight", "morganlefay", "mysterio", "nadiapym", "nebula", "nickfury", "nightcrawler", "nova", "odin", "philcoulson", "proximamidnight", "psylocke", "punisher", "quasar", "quicksilver", "redhulk", "redskull", "rhino", "robbiereyes", "rocketraccoon", "rogue", "ronan", "sabertooth", "sandman", "satana", "scarletwitch", "sentinel", "shangchi", "sharoncarter", "sharonrogers", "shehulk", "shuri", "sif", "silk", "sin", "singularity", "sistergrimm", "skurge", "songbird", "spidergwen", "spiderman", "spiderman2099", "squirrelgirl", "starlord", "storm", "stryfe", "supergiant", "thanos", "thing", "thor", "titania", "ulik", "ultron", "ulyssesklaue", "valkyrie", "venom", "victorious", "vision", "volstagg", "vulture", "warmachine", "warpath", "warwolf", "wasp", "weaponhex", "whiplash", "whitefox", "whitetiger", "wiccan", "wintersoldier", "wolverine", "wong", "x-23", "yellowjacket", "yondu"]
+		var dacNames = ["MFF Auto Chess", "absorbingman", "adamwarlock", "agentvenom", "amadeuscho", "americachavez", "ancientone", "angel", "angela", "antiman", "antman", "apocalypse", "arachknight", "baronmordo", "beast", "blackbolt", "blackcat", "cullobsidian", "blackpanther", "blackwidow", "blade", "bluemarvel", "bullseye", "cable", "captainamerica", "captainmarvel", "carnage", "clea", "colossus", "corvusglaive", "crescent", "crossbones", "crystal", "cyclops", "daisyjohnson", "daredevil", "deadpool", "deathlok", "destroyer", "doctordoom", "doctorminerva", "doctoroctopus", "doctorstrange", "domino", "dormmamu", "drax", "ebonymaw", "elektra", "elsabloodstone", "emmafrost", "enchantress", "falcon", "fandral", "fantomex", "gambit", "gamora", "ghost", "ghostpanther", "ghostrider", "giantman", "goliath", "gorgon", "greengoblin", "groot", "gwenpool", "hawkeye", "heimdall", "hela", "hellcat", "hellstorm", "hogun", "hulk", "hulkbuster", "hulkling", "humantorch", "hyperion", "inferno", "invisiblewoman", "ironfist", "ironhammer", "ironheart", "ironman", "janefoster", "jeangrey", "jessicajones", "juggernaut", "kaecilius", "kamalakhan", "karnak", "katebishop", "kidkaiju", "killmonger", "kingpin", "korath", "kraventhehunter", "lash", "lincoln", "lizard", "loki", "lukecage", "lunasnow", "magik", "magneto", "malekith", "mantis", "maximus", "medusa", "milesmorales", "misterfantastic", "mistyknight", "mockingbird", "modok", "moongirl", "moonknight", "morganlefay", "mysterio", "nadiapym", "nebula", "nickfury", "nightcrawler", "nova", "odin", "philcoulson", "proximamidnight", "psylocke", "punisher", "quasar", "quicksilver", "redhulk", "redskull", "rhino", "robbiereyes", "rocketraccoon", "rogue", "ronan", "sabertooth", "sandman", "satana", "scarletwitch", "sentinel", "shangchi", "sharoncarter", "sharonrogers", "shehulk", "shuri", "sif", "silk", "sin", "singularity", "sistergrimm", "skurge", "songbird", "spidergwen", "spiderman", "spiderman2099", "squirrelgirl", "starlord", "storm", "stryfe", "supergiant", "thanos", "thing", "thor", "titania", "ulik", "ultron", "ulyssesklaue", "valkyrie", "venom", "victorious", "vision", "volstagg", "vulture", "warmachine", "warpath", "warwolf", "wasp", "weaponhex", "whiplash", "whitefox", "whitetiger", "wiccan", "wintersoldier", "wolverine", "wong", "x-23", "yellowjacket", "yondu"]
+
+		var colors = ["#FF7F7F","#FFBF7F","#FFDF7F","#FFFF7F","#BFFF7F","#7FFF7F","#7FFFFF","#7FBFFF","#7F7FFF","#FF7FFF","#BF7FBF","#3B3B3A","#858585", "#F7F7F7"];
+
+		function generateRandomColor(){
+			randomColor = colors[Math.floor(Math.random() * colors.length)];
+			return randomColor;
+		}
+
+		var singleTier = "<tr><td class='labelHolder' contenteditable='true' style='background-color: " + generateRandomColor() + "'><span class='label'>NEW</span></td><td><div class='tier sort' id='rows'><div class='hiddenkid'></div></div></td><td class='tButtons'><div id='settings'></div></td><td class='tButtons'><div id='moveUp'></div><div id='moveDown'></div></td><td class='tButtons'><div id='addButton'></div><div id='deleteButton'></div></td></div></div></td></tr>";
+
+
+		$("#tierTitle").click(function() {
+			var title = $(this);
+			var text = title.text();
+
+			var newTitle = prompt("New tier list title:", text);
+
+			if (newTitle !== null) {
+				title.text(newTitle);
+			}
+		});
+
+		var screenshotMode = false;
+		// first is the row in the table of the tier, second is the index of its color
+		var tierDefaults = [ [$("tr:nth-of-type(1)"), 0],
+					  [$("tr:nth-of-type(2)"), 1],
+					  [$("tr:nth-of-type(3)"), 3],
+					  [$("tr:nth-of-type(4)"), 5],
+					  [$("tr:nth-of-type(5)"), 7],
+					  [$("tr:nth-of-type(6)"), 8],
+					  [$("tr:nth-of-type(7)"), 9] ];
+		var tier = []; // format: [element, color id]
+		var tierlist = [];
+		var currentTier;
+		var tempTier;
+		var tierIndex;
+		var currentColor;
+		var colorIndex;
+		var currentGame;
+		var currentGameChars = gameDAC;
+		var characters;
+		var resized,tableWidth;
+		var shareLink;
+		var defaultList = "dac==S|5==A|4==B|3==C|1==F|0";
+
+		for (var i = 0; i < tierDefaults.length; i++) {
+			tierDefaults[i][0].find(".labelHolder").css("background",colors[tierDefaults[i][1]]);
+		}
+
+		$(document).on("load", function(){
+			generateRandomColor();
+		});
+
+		$(document).on("click", "#settings", function() { // open settings modal
+			currentTier = $(this).parent().parent();
+			currentColor = currentTier.find(".labelHolder").css("background-color");
+			$("textarea").val(currentTier.find(".labelHolder").text());
+			colorIndex = colors.indexOf(rgb2hex(currentColor).toUpperCase());
+			tier = [currentTier, colorIndex];
+			// console.log(tier);
+			for (var i = 0; i < $("#modal span").length; i++) {
+				$("#modal span:nth-of-type("+(i+1)+")").attr("class","nope");
+			}
+			$("#modal span:nth-of-type("+(colorIndex+1)+")").attr("class","selected");
+			$("#modal").css("display","block");
+			$("#overlay").css("opacity", 1);
+			$("#overlay").css("visibility", "visible");
+			$("#modal").css("top",alignPopup($("#modal")));
+		});
+
+		$(document).on("mouseenter", ".character", function(event) { // individual character hover
+			var el = event.target;
+			var coords = el.getBoundingClientRect();
+			var nameLength = dacNames[el.id].length;
+
+      $("#characterHighlightName").text(dacNames[el.id]);
+      $("#characterHighlight").css("display", "inline-block");
+
+			var nameBox = $("#characterHighlight")[0].getBoundingClientRect();
+			$("#characterHighlight").css("top", coords.y - 22);
+			$("#characterHighlight").css("left", coords.x + coords.width / 2 - nameBox.width / 2);
+
+		}).on("mouseleave", ".character", function(event) {
+			var el = event.target;
+			$("#characterHighlight").css("display", "none");
+		});
+
+		$(document).on("click", "#game", function() { // open game changer modal
+			$("#gameChange").css("display","block");
+			$("#overlay").css("opacity", 1);
+			$("#overlay").css("visibility", "visible");
+			$("#gameChange").css("top",alignPopup($("#gameChange")));
+		});
+
+		$(document).on("click", "#help", function() { // open help modal
+			$("#helpMenu").css("display","block");
+			$("#overlay").css("opacity", 1);
+			$("#overlay").css("visibility", "visible");
+			$("#helpMenu").css("top",alignPopup($("#helpMenu")));
+		});
+
+		$(document).on("click", "#version", function() { // open patch notes modal
+			$("#patchNotes").css("display","block");
+			$("#overlay").css("opacity", 1);
+			$("#overlay").css("visibility", "visible");
+			$("#patchNotes").css("top",alignPopup($("#patchNotes")));
+		});
+
+		$(document).on("click", "#colorselect span", function() { // change row label
+			for (var i = 0; i < $("#modal span").length; i++) {
+				$("#modal span:nth-of-type("+(i+1)+")").attr("class","nope");
+			}
+			$(this).attr("class","selected");
+			currentTier.find(".labelHolder").css("background-color",$(this).css("background-color"));
+			updateTiers();
+		});
+
+		$(document).on("click", "#gameChange button", function() { // change game
+			console.log("Game has been changed!");
+			switch($(this).attr("id")) {
+				case "switchDAC": changeGame(gameDAC);break;
+			}
+		});
+
+		$(document).on("click", function(e){
+			clicked = e.target.id;
+			if (clicked == "tr span"){
+				currentTier = $(e.target).closest("tr");
+				if (currentTier.prev("tr").length != 0) {
+					currentTier.insertBefore(currentTier.prev("tr"));
+				}
+				console.log(currentTier + " is active");
+			}
+		});
+
+		$(document).on("click", function(e) {
+			clicked = e.target.id;
+			if(clicked == "overlay" || clicked == "modalWrapper" || clicked == "close") { // close modals
+				$("#overlay").css("opacity", 0);
+				$("#overlay").css("visibility", "hidden");
+				$("#modal").css("display", "none");
+				$("#gameChange").css("display", "none");
+				$("#helpMenu").css("display", "none");
+				$("#patchNotes").css("display", "none");
+				$("#screenshotShow").css("display", "none");
+			} else if (clicked == "saveSettings") {
+				localStorage.setItem("TierListCreatorCode",toCode());
+				$("#overlay").css("opacity", 0);
+				$("#overlay").css("visibility", "hidden");
+				$("#modal").css("display", "none");
+				$("#gameChange").css("display", "none");
+				$("#helpMenu").css("display", "none");
+				$("#patchNotes").css("display", "none");
+				$("#screenshotShow").css("display", "none");
+			} else if(clicked == "screenshot") { // take a screenshot
+				$(".controlList").css("background-image", "url(img/background.jpg");
+				$(".tButtons").css("display","none");
+				$("#exportcode").val(toCode());
+				$("#modal").css("display", "none");
+				$("#gameChange").css("display", "none");
+				$("#helpMenu").css("display", "none");
+				$("#patchNotes").css("display", "none");
+				$("#screenshotShow canvas").remove();
+				$("#screenshotShow").css("display","block");
+				$("#overlay").css("opacity", 1);
+				$("#overlay").css("visibility", "visible");
+				window.history.pushState(null, null, "?code=" + encodeURL(toCode()));
+				$("#exportlink").val(window.location.href);
+				// $("td:last-of-type").css("display","none");
+				canvas = document.querySelector("canvas");
+				html2canvas(document.querySelector("#Editor"), {canvas: canvas, scale: 1, logging: false})
+				.then(function(canvas){
+					document.body.appendChild(canvas),
+					$("canvas").css("width", "100%");
+					$("#screenshotShow span").after(canvas);
+					$("td:last-of-type").css("display","table-cell");
+					$("#screenshotShow").css("top",alignPopup($("#screenshotShow")));
+					$(".tButtons").css("display","table-cell");
+				});
+			} else if(clicked == "hidebuttons") { // hide the buttons
+				if (screenshotMode) {
+					$(".tButtons").css("display","table-cell");
+					$("#hidebuttons").text("Hide Controls");
+					screenshotMode = false;
+				} else {
+					$(".tButtons").css("display","none");
+					$("#hidebuttons").text("Show Controls");
+					screenshotMode = true;
+				}
+			} else if (clicked == "deleteButton") {
+				currentTier = $(e.target).closest("tr");
+				if (currentTier.next("tr").length != 0 || currentTier.prev("tr").length == 1)
+					currentTier.remove();
+					updateTiers();
+			} else if (clicked == "addButton") {
+				currentTier = $(e.target).closest("tr");
+				$("tr:nth-of-type("+($("tr").index(currentTier)+1)+")").after(singleTier);
+			} else if(clicked == "clearRow") { // put characters in this row back into the box
+				for(var i = 0; i < currentTier.find("#rows div").length; i++) {
+					$("#char div:last-child").after(currentTier.find("#rows div"));
+				}
+			} else if(clicked == "deleteRow") { // delete this row
+				for(var i = 0; i < currentTier.find("#rows div").length; i++) {
+					$("#char div:last-child").after(currentTier.find("#rows div"));
+				}
+				currentTier.remove();
+				updateTiers();
+				$("#overlay").css("opacity", 0);
+				$("#overlay").css("visibility", "hidden");
+				$("#modal").css("display", "none");
+			} else if (clicked == "addRowUp") { // add a row on top of the current row
+				$("tr:nth-of-type("+($("tr").index(currentTier)+1)+")").before(singleTier);
+				updateTiers();
+			} else if (clicked == "addRowBelow") { // add a row below the current row
+				$("tr:nth-of-type("+($("tr").index(currentTier)+1)+")").after(singleTier);
+				updateTiers();
+			} else if (clicked == "moveUp") { // move the row above the row above it
+				currentTier = $(e.target).closest("tr");
+				if (currentTier.prev("tr").length != 0)
+					currentTier.insertBefore(currentTier.prev("tr"));
+			} else if (clicked == "moveDown") { // move the row below the row below it
+				currentTier = $(e.target).closest("tr");
+				if (currentTier.next("tr").length != 0)
+					currentTier.insertAfter(currentTier.next("tr"));
+			} else if (clicked == "runCode") {
+				loadCode($("#exportcode").val());
+			} else if (clicked == "reset") {
+
+				localStorage.setItem("TierListCreatorCode", "dac==S|5==A|4==B|3==C|1==F|0");
+				window.history.pushState(null, null, "/");
+
+				switch(currentGameChars[0]) {
+					case "dac": changeGame(gameDAC);break;
+				}
+				loadCode(currentGameChars[0]+"dac==S|5==A|4==B|3==C|1==F|0");
+			}
+		});
+
+		function sanitizeHtml(html) {
+			return html.replace(/</g, "&lt;")
+				.replace(/>/g, "&gt;")
+				.replace(/\n/g, "<br>");
+		}
+
+		$("#exportlink").click(function(e) {
+			$(this).select();
+			e.preventDefault();
+		});
+
+		$("#labelName").bind("input propertychange", function() {
+			var newLabel = sanitizeHtml($("#labelName").val());
+			currentTier.find(".label").html(newLabel);
+		});
+
+		// $(document).on("mouseenter", ".labelHolder", function(el) {
+		// 	console.log();
+		// 	if (el.currentTarget.childNodes[0].toString() === "[object HTMLBRElement]") {
+		// 		el.currentTarget.childNodes[0].replaceWith(document.createElement("span").className("label"));
+		// 	}
+		// })
+
+		function rgb2hex(rgb) {
+			rgb = rgb.match(/^rgba?\((\d+),\s*(\d+),\s*(\d+)(?:,\s*(\d+))?\)$/);
+			function hex(x) {
+				return ("0" + parseInt(x).toString(16)).slice(-2);
+			}
+			return "#" + hex(rgb[1]) + hex(rgb[2]) + hex(rgb[3]);
+		}
+
+		function updateTiers() {
+			tierlist = [];
+			tempTier = currentTier;
+			for (var i = 0; i < $("tr").length; i++) {
+				currentTier = $("tr:nth-of-type("+(i+1)+")");
+				currentColor = currentTier.find(".labelHolder").css("background-color"); // returns in rgb format, have to convert to hex
+				tier[0] = currentTier;
+				tier[1] = colors.indexOf(rgb2hex(currentColor).toUpperCase());
+				// console.log(tier);
+				tierlist.push(tier);
+			}
+			currentTier = tempTier;
+		}
+
+		function checkUrl() {
+			var params = new URLSearchParams(window.location.search);
+			if (params.has('code')) {
+				var code = params.get('code');
+				if (code !== "") {
+					return code;
+				}
+			} else {
+				return null;
+			}
+		}
+
+		function encodeURL(code) {
+			var converted = code.replace("$", "%24").replace("<br>", "\n");
+			return encodeURIComponent(converted);
+		}
+
+		function decodeUrl(code) {
+			if (code === null || code === undefined) {
+				return null
+			}
+			return decodeURIComponent(code);
+		}
+
+		function changeGame(game) {
+			currentGameChars = [];
+			currentGameChars = game;
+			currentGame = game[0];
+			$(".character").each( function() {
+				$(this).remove();
+			});
+			for (var i = 1; i < game.length; i++) {
+				$("#char div:last-child").after(singleChar);
+				$("#char div:last-child").css("background-image","url(img/"+currentGame+"/"+game[i]+".png)");
+				$("#char div:last-child").attr("id",i);
+			}
+			$("h1 span").text(currentGame);
+			updateTiers();
+		}
+
+		function toCode() { // format game==label|color|char1|char2|...==label|color|char1|char2|...==...
+			var codeColors = [], labels = [], currentChars = [], shareCode = "";
+			var correctedRowName = "";
+			characters = [];
+			$("tr").each( function() {
+				currentChars = [];
+				var currentRow = parseInt($(this).context.rowIndex.toString());
+				// Fix row being undefined
+				if (currentRow === 0) {
+					correctedRowName = "S";
+				} else if (currentRow === 1) {
+					correctedRowName = "A";
+				} else if (currentRow === 2) {
+					correctedRowName = "B";
+				} else if (currentRow === 3) {
+					correctedRowName = "C";
+				} else if (currentRow === 4) {
+					correctedRowName = "F";
+				} else {
+					correctedRowName = "Tier";
+				}
+
+				labels.push($(this).find(".label").html() || correctedRowName);
+				// if ($(this).find(".label").html() === "---") {
+				// 	$(this).find(".label") = "test";
+				// }
+				codeColors.push(colors.indexOf(rgb2hex($(this).find(".labelHolder").css("background-color")).toUpperCase()));
+				$(this).find(".character").each( function() {
+					currentChars.push($(this).attr("id"));
+				});
+				characters.push(currentChars);
+			});
+			shareCode += currentGame + "==";
+			for (var i = 0; i < labels.length; i++) {
+				shareCode += labels[i] +"|"+ codeColors[i];
+				if (characters[i].length != 0)
+					shareCode += "|";
+				for (var c = 0; c < characters[i].length; c++) {
+					shareCode += characters[i][c];
+					if (c != characters[i].length-1)
+						shareCode += "|";
+				}
+				if (i != labels.length-1)
+					shareCode += "==";
+			}
+			console.log(shareCode);
+			return shareCode;
+		}
+
+		function loadCode(code) {
+			var codeSplit = [], tempTier = [], processedCode = [];
+			codeSplit = code.split("==");
+			for (var i = 0; i < codeSplit.length; i++) {
+				tempTier = codeSplit[i].split("|");
+				for (var c = 1; c < tempTier.length; c++)
+					tempTier[c] = Number(tempTier[c]);
+				processedCode[i] = tempTier;
+			}
+			$("tr").each( function() {
+				$(this).remove();
+			});
+			// console.log(processedCode);
+			switch(processedCode[0][0]) {
+				case "dac": changeGame(gameDAC);break;
+			}
+			for (var i = 1; i < processedCode.length; i++) {
+				$("tbody").append(singleTier);
+				$("tr:last-of-type").find(".labelHolder").css("background-color",colors[processedCode[i][1]]);
+				$("tr:last-of-type").find(".label").html(sanitizeHtml(processedCode[i][0]));
+				for (var c = 2; c < processedCode[i].length; c++) {
+					$("tr:last-of-type").find(".tier div:last-child").after(singleChar);
+					$("tr:last-of-type").find(".tier div:last-child").css("background-image","url(img/"+processedCode[0]+"/"+currentGameChars[processedCode[i][c]]+".png)");
+					$("tr:last-of-type").find(".tier div:last-child").attr("id",processedCode[i][c]);
+					$("#char #"+processedCode[i][c]).remove();
+				}
+			}
+		}
+
+		function loadDefault() {
+			loadCode("dac==S|5==A|4==B|3==C|1==F|0");
+		}
+
+
+		function tierlistSize() {
+			if ($("table").width > $("#tablewrap").width)
+				$("#tablewrap").css("display","table-cell");
+			else
+				$("#tablewrap").css("display","block");
+		}
+
+		function alignPopup(popup) {
+			return Math.floor(($(window).height() - popup.height())/ 20)+"vh";
+			// return Math.floor(($(window).height() - popup.height())/2)+"px";
+		}
+
+		$("#char").html("<div></div>");
+		$(document).ready( function() {
+			var urlCode = decodeUrl(checkUrl());
+			if (urlCode != null) {
+				console.log("Loading code from url.");
+				loadCode(urlCode);
+			} else {
+				if (localStorage.getItem("TierListCreatorCode") === null) {
+					console.log("No prior data.");
+					changeGame(gameDAC);
+					loadDefault();
+				} else {
+					$("#exportcode").val(localStorage.getItem("TierListCreatorCode"));
+					loadCode(localStorage.getItem("TierListCreatorCode"));
+				}
+			}
+
+			updateTiers();
+			tierlistSize();
+		});
+		$(window).resize( function () {
+			tierlistSize();
+		})
+
+	</script>
+	<script type="text/javascript">window.onload=loadDefault();</script>
+</body>
+</html>

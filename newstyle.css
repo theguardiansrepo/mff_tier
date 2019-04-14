@@ -1,0 +1,504 @@
+html,body{
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+	padding: 0;
+	margin: 0;
+	width:100%;
+	overflow: hidden;
+}
+
+body {
+	font-family: 'Roboto', sans-serif;
+	text-align: center;
+	color: #242424;
+	background-color: #fefefe;
+	touch-action: pan-y;
+}
+
+a, a:visited {
+	color: #51bff0;
+	text-decoration: none;
+} a:hover{ color: #43a2ce; }
+
+dt {
+	font-weight: 500;
+}
+
+dd {
+	margin-bottom: 5px;
+}
+
+#controls {
+	width: 100%;
+	height: 120px;
+	margin: 0 auto;
+	padding-right: 1px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+h1 {
+	font-style: italic;
+	font-weight: 100;
+	text-align: left;
+	text-transform: uppercase;
+}
+
+#controls h1 {
+	display:inline-block;
+	text-shadow: 2px 2px 5px #2f7fb7;
+}
+
+#buttons {
+	
+}
+
+#tablewrap {
+	padding: 30px 0;
+	/*background-color: #c2c2c2;*/
+	width: 100%;
+	display:block;
+}
+
+td.tButtons:nth-of-type(2n) {
+	border-left: none;
+	border-right: none;
+}
+
+td.tButtons:nth-of-type(3n) {
+	border-right: none;
+}
+
+
+td.tButtons:nth-of-type(5n){
+	border-left: none;
+}
+
+td {
+	border: solid 3px #1d1d1d;
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	height: 66px;
+}
+
+tr {
+	line-height: 0px;
+}
+
+table {
+	min-width: 100%;
+	margin: 0 auto;
+	border-spacing: 0;
+	border: solid 3px #1d1d1d;
+	border-radius: 5px;
+	background:#2b2b2b;
+}
+
+.labelHolder {
+	min-width: 50px;
+	height: 64px;
+	width: 5%;
+	transition: background .3s;
+	line-height: 1em;
+	text-align: center;
+}
+
+.tButtons {
+/*	width: 130px;*/
+	background-color: #1d1d1d;
+	transition: all .3s;
+}
+
+.tablePadding {
+	width: 95%;
+    margin: 0 auto;
+    display: block;
+}
+
+#labelName {
+	text-align: center;
+	border-radius: 5px;
+	width: 20%;
+	max-width: 100%;
+	min-width: 20%;
+	resize: horizontal;
+}
+
+
+
+.label {
+	min-width: 56px;
+	max-width: 128px;
+	line-height: 16px;
+	text-align: center;
+	border: none;
+	font-weight: 600;
+	margin: 0;
+	display: inline-block;
+	padding: 4px;
+}
+
+.tier {
+	min-height: 66px;
+	text-align: left;
+}
+
+.hiddenkid {
+	display:none;
+}
+
+td:last-of-type {
+	/*background-color: #1d1d1d;*/
+}
+
+#saveSettings, #clearRow {
+	margin: 0px 5px;
+}
+
+
+baby {
+	font-size: smaller;
+	vertical-align: super;
+}
+
+#version {
+	cursor: pointer;
+}
+#version:after {
+	vertical-align: super;
+	content: "*";
+}
+
+.controlList {
+	background-image: url(img/background.jpg);
+	background-size: 100%;
+	width: 100%;
+	color: white;
+	border-bottom: 2px solid #1d1d1d;
+}
+
+#moveButtons {
+	margin: 0 auto;
+}
+
+#funcButtons {
+	color: white;
+	margin:	auto;
+	vertical-align: middle;
+}
+
+.lrg {
+	font-size: 1.95em;
+}
+
+div#moveUp:hover, div#moveDown:hover, div#settings:hover, div#addButton:hover, div#deleteButton:hover {
+	opacity: 0.5;
+	cursor: pointer;
+}
+
+#settings {
+	height:32px;
+	width:32px;
+	background: url('img/settings.png') center no-repeat;
+	cursor: pointer;
+	transition: all .3s;
+	border-right: none;
+}
+#addButton {
+	height:32px;
+	width:32px;
+	background: url('img/plus.png') center no-repeat;
+	cursor: pointer;
+	transition: all .3s;
+}
+#deleteButton {
+	width:32px;
+	height:32px;
+	background: url('img/minus.png') center no-repeat;
+	cursor: pointer;
+	transition: all .3s;
+}
+#moveUp {
+	height:32px;
+	width:32px;
+	background: url('img/arrowup.png') center no-repeat;
+	cursor: pointer;
+	transition: all .3s;
+}
+#moveDown {
+	height:32px;
+	width:32px;
+	background: url('img/arrowdown.png') center no-repeat;
+	cursor: pointer;
+	transition: all .3s;
+}
+#deleteThisRow {
+	height:32px;
+	width:32px;
+	background: url('img/arrowdown.png') center no-repeat;
+	cursor: pointer;
+	transition: all .3s;
+}
+#moveButtons:hover {
+	opacity: .5;
+}
+
+#char {
+	width: 70%;
+	margin: 10px auto;
+	line-height: 0px;
+
+}
+
+img {
+	height: 64px;
+}
+
+.character {
+	display:inline-block;
+	height: 64px;
+	width: 64px;
+	/*border-radius: 50%;*/
+	border-radius: 4px;
+	background-size: 112%;
+	background-position: center;
+	margin: 1px;
+	image-rendering: -webkit-optimize-contrast;
+	image-rendering: -moz-crisp-edges;
+}
+
+#overlay {
+	opacity:0;
+	visibility: hidden;
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width:100%;
+    height:100% !important;
+    text-align:center;
+    z-index: 1000;
+	background-color:rgba(0,0,0,.5);
+	transition: opacity .3s;
+}
+
+#modal, #gameChange, #screenshotShow, #helpMenu, #patchNotes {
+	border-radius: 5px;
+}
+
+#overlay #modalWrapper #modal,#gameChange,#helpMenu,#screenshotShow, #patchNotes {
+	position: relative;
+	display:none;
+	width: 728px;
+	margin: 0 auto;
+  background-color: #fff;
+  padding:20px;
+  text-align:center;
+	z-index: 2000;
+}
+
+#characterHighlight {
+	display: none;
+	padding: 1px;
+	/*border-radius: 5px;*/
+	position: absolute;
+	background-color: #fff;
+	opacity: 0.8;
+	z-index: 2000;
+}
+
+#gameChange {
+	text-align: left;
+}
+#screenshotShow canvas {
+	width: 95%;
+}
+
+canvas {
+	height: auto !important;
+	width: auto !important;
+	max-width: 90% !important;
+}
+
+.sharebox {
+	display: inline-block;
+	/* width: 100%; */
+}
+.tblabel {
+	display: block;
+	padding-bottom: 5px;
+}
+
+#importexport {
+	/* margin: 0 auto; */
+	/* text-align: left; */
+}
+.importexportbtn {
+	display: block;
+	margin: 0 auto;
+}
+
+#sharelink {
+	/* margin: 0 auto; */
+	/* text-align: right; */
+}
+
+#screenshotShow p {
+	padding: 10px;
+	text-align: left;
+}
+
+#tierTitle {
+	font-style: italic;
+	font-weight: 600;
+	text-align: center;
+	margin: 0 auto;
+	width: fit-content;
+	padding-bottom: 24px;
+	cursor: pointer;
+}
+#tierTitle:hover {
+	color: #51bff0;
+}
+
+#exportcode {
+	/* width: 40%; */
+	height: 10%;
+	text-align: center;
+	border-radius: 5px;
+	resize: none;
+}
+
+#exportlink {
+	/* width: 40%; */
+	height: 10%;
+	text-align: center;
+	border-radius: 5px;
+	resize: none;
+}
+
+#switchButtons {
+	line-height:2em;
+	text-align: left;
+	width: 80%;
+}
+
+#helpMenu {
+	text-align: left;
+}
+
+
+
+#patchNotes {
+	text-align: left;
+}
+
+#patchNotes > dl > dd {
+	font-size: 0.85em;	
+}
+
+#patchNotes > dl > dd:before {
+	content: "- ";
+}
+
+#colorselect {
+	width: 50%;
+	/*height: 40px;*/
+	margin: 0 auto;
+}
+
+#colorselect span {
+	width: 48px;
+	height: 48px;
+	margin: 2px;
+	display: inline-block;
+	transition: box-shadow .1s;
+	cursor: pointer;
+	border: 2px solid #00000021;
+}
+
+#colorselect span.selected {
+	border-color: white;
+}
+
+#close:before {
+	content: "\00D7";
+}
+
+#close {
+	cursor: pointer;
+	position: absolute;
+	top:0;
+	right:0;
+	width:24px;
+	height:24px;
+	font-size: 1.25em;
+	margin: 8px;
+	border-radius: 0px 5px 0px 5px;
+	/*margin:16px;*/
+	/*font-style: italic;*/
+	text-align: center;
+	opacity: .5;
+	transition: opacity .3s;
+	color:white;
+	background-color: #FF7F7F;
+	/*font-size: 1.45em;*/
+	/*background:url("img/close.png");*/
+}
+#close:hover {
+	opacity:1;
+}
+
+button {
+	background: #fff;
+	box-shadow: 0 2px #dedede; /* found a way to shoehorn it back in boys */
+	border: solid 1px #dedede;
+	border-radius: 5px;
+	cursor: pointer;
+	outline: none;
+	position: relative;
+	padding: 4px 8px;
+}
+
+button:active {
+	box-shadow: 0 1px #dedede;
+	top: 1px;
+}
+
+/*@media (max-width: 1280px) and (max-device-width: 1280px) {
+	.tier{width:640px;}
+	table{min-width:0px;}
+}
+*/
+@media (max-width: 425px) {
+	#controls > h1 {
+		font-size: 1.2em;
+	}
+	#screenshotShow  {
+		display: block;
+		width: 80%;
+		top: 5vh !important;
+	}
+	#screenshotShow  canvas {
+    	width: 50%;
+	}
+	#gameChange {
+		width: 80%;
+	}
+	#help {
+		display: none;
+	}
+	#patchNotes {
+		top: 5vh !important;
+		width: 80%;
+	}
+}
+
+@media (max-width: 1176px) {
+	.tier {
+		width: auto;}
+}
+
+@media handheld {
+	body{width: 800px;}
+}
